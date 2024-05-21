@@ -5,7 +5,7 @@ namespace LocalNetworkMessager
         public event Action Disconnect;
         public event Action<string> Connect;
         public event Action<string> SendMessage;
-        public event Func<string> CreateServer;
+        public event Action CreateServer;
         public event Action CloseServer;
 
 
