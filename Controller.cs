@@ -17,6 +17,7 @@ namespace LocalNetworkMessager
 			if (isListening)
 			{
 				MessageReceived?.Invoke("Disconnect or close server firstly!");
+				return;
 			}
 			isListening = true;
 			client.Connect(way, 6666);
@@ -33,6 +34,7 @@ namespace LocalNetworkMessager
 			if (isListening)
 			{
 				MessageReceived?.Invoke("Disconnect or close server firstly!");
+				return;
 			}
 			amIServer = true;
 			isListening = true;
