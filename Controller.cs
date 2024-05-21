@@ -108,7 +108,7 @@ namespace LocalNetworkMessager
 		}
 		public void Send(string message)     //public event Action<string> SendMessage;
 		{
-			message = Environment.UserDomainName + message + '\n';
+			message = Environment.UserDomainName + ':' + message + '\n';
 			if (amIServer)
 			{
 				message = "Server-" + message;
