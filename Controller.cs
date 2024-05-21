@@ -25,6 +25,11 @@ namespace LocalNetworkMessager
 		}
 		public void Disconnect()     //public event Action Disconnect;
 		{
+			if (amIServer)
+			{
+				MessageReceived?.Invoke("you are server now!");
+				return;
+			}
 			isListening = false;
 			Receiver.Wait();
 			client.Dispose();
@@ -44,6 +49,11 @@ namespace LocalNetworkMessager
 		}
 		public void CloseServer()     //public event Action CloseServer;
 		{
+			if (!amIServer)
+			{
+				MessageReceived?.Invoke("Create server firstly!");
+				return;
+			}
 			amIServer = false;
 			isListening = false;
 			Receiver.Wait();
