@@ -11,14 +11,15 @@ namespace LocalNetworkMessager
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             Controller controller = new Controller();
+            ApplicationConfiguration.Initialize();
             Form1 myForm = new Form1();
             myForm.Connect += controller.ConnectTo;
             myForm.Disconnect += controller.Disconnect;
             myForm.CreateServer += controller.CreateServer;
             myForm.CloseServer += controller.CloseServer;
             myForm.SendMessage += controller.Send;
-            controller.MessageReceived += myForm.AddTextToLIst;
-            ApplicationConfiguration.Initialize();
+            controller.MessageReceived += myForm.AddTextToList;
+            
             Application.Run(myForm);
         }
     }
