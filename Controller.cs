@@ -76,6 +76,7 @@ namespace LocalNetworkMessager
 		}
 		void SendToAll(List<NetworkStream> streams, string message)
 		{
+			MessageReceived?.Invoke(message);
 			Parallel.For(0, streams.Count, (X) =>
 			{
 				SubSend(streams[X], Encoding.UTF8.GetBytes(message));
@@ -111,7 +112,6 @@ namespace LocalNetworkMessager
 			{
 				message = "Server-" + message;
 				SendToAll(clientsInWork, message);
-				MessageReceived?.Invoke(message);
 			}
 			else
 			{
