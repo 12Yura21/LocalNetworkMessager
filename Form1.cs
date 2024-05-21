@@ -16,9 +16,17 @@ namespace LocalNetworkMessager
             
         }
 
-        public void AddTextToLIst(string message)
+        public void AddTextToList(string message)
         {
-            listBox1.Items.Add(message);
+            if (listBox1.InvokeRequired)
+            {
+                listBox1.Invoke(new Action<string>((X) => listBox1.Items.Add(X)), message);
+            }
+            else
+            {
+                listBox1.Items.Add(message);
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
